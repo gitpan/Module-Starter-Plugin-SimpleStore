@@ -1,6 +1,6 @@
 package Module::Starter::Plugin::InlineStore;
 
-our $VERSION = '0.01_04';
+our $VERSION = '0.02';
 
 use warnings;
 use strict;
@@ -15,7 +15,7 @@ Module::Starter::Plugin::InlineStore -- inline module template files
    Module::Starter::Simple
    Module::Starter::Plugin::Template
    Module::Starter::Plugin::InlineStore
-	 ...
+   ...
  );
 
  Module::Starter->create_distro( ... );
@@ -51,13 +51,21 @@ checking the MODULE_TEMPLATE_FILE environment variable.
 
 =cut
 
+sub _template_filehandle {
+    my $self = shift;
+
+    my $template_filename = $ENV{MODULE_TEMPLATE_FILE};
+    open my $template_file, '<', $template_filename
+      or die "couldn't open template file: $template_filename";
+
+    return $template_file;
+}
+
 sub templates {
     my $self = shift;
     my %template;
-
-		my $template_filename = $ENV{MODULE_TEMPLATE_FILE};
-    open my $template_file, '<', $template_filename
-			or die "couldn't open template file: $template_filename";
+     
+    my $template_file = $self->_template_filehandle;
 
     my $fn = '_';
     while (<$template_file>) {
