@@ -1,6 +1,6 @@
 package Module::Starter::Plugin::InlineStore;
 
-our $VERSION = '0.12';
+our $VERSION = '0.14';
 
 use warnings;
 use strict;
@@ -11,9 +11,9 @@ Module::Starter::Plugin::InlineStore -- inline module template files
 
 =head1 VERSION
 
-version 0.12
+version 0.14
 
- $Id: InlineStore.pm,v 1.6 2004/09/30 12:29:03 rjbs Exp $
+ $Id: InlineStore.pm,v 1.7 2004/10/02 02:08:30 rjbs Exp $
 
 =head1 SYNOPSIS
 

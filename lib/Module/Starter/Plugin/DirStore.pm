@@ -1,6 +1,6 @@
 package Module::Starter::Plugin::DirStore;
 
-our $VERSION = '0.12';
+our $VERSION = '0.14';
 
 use warnings;
 use strict;
@@ -13,9 +13,9 @@ Module::Starter::Plugin::DirStore -- module template files in a directory
 
 =head1 VERSION
 
-version 0.12
+version 0.14
 
- $Id: DirStore.pm,v 1.7 2004/09/30 12:29:03 rjbs Exp $
+ $Id: DirStore.pm,v 1.8 2004/10/02 02:08:30 rjbs Exp $
 
 =head1 SYNOPSIS
 
