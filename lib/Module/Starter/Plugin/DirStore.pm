@@ -1,6 +1,6 @@
 package Module::Starter::Plugin::DirStore;
 
-our $VERSION = '0.01_03';
+our $VERSION = '0.01_04';
 
 use warnings;
 use strict;

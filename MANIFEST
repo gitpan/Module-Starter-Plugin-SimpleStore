@@ -4,6 +4,7 @@ META.yml # Will be created by "make dist"
 Makefile.PL
 README
 lib/Module/Starter/Plugin/DirStore.pm
+lib/Module/Starter/Plugin/InlineStore.pm
 t/00.load.t
 t/pod-coverage.t
 t/pod.t
