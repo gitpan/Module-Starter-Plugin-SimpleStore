@@ -1,4 +1,4 @@
-package Module::Starter::Plugin::InlineStore;
+package ModuleStore;
 
 our $VERSION = '0.12';
 
@@ -7,20 +7,20 @@ use strict;
 
 =head1 NAME
 
-Module::Starter::Plugin::InlineStore -- inline module template files
+Module::Starter::Plugin::ModuleStore -- store inline templates in modules
 
 =head1 VERSION
 
 version 0.12
 
- $Id: InlineStore.pm,v 1.6 2004/09/30 12:29:03 rjbs Exp $
+ $Id: ModuleStore.pm,v 1.1 2004/09/30 12:29:03 rjbs Exp $
 
 =head1 SYNOPSIS
 
  use Module::Starter qw(
    Module::Starter::Simple
    Module::Starter::Plugin::Template
-   Module::Starter::Plugin::InlineStore
+   Module::Starter::Plugin::ModuleStore
    ...
  );
 
@@ -30,20 +30,8 @@ version 0.12
 
 This Module::Starter plugin is intended to be loaded after
 Module::Starter::Plugin::Template.  It implements the C<templates> method,
-required by the Template plugin.  The C<InlineStore> plugin stores all the
-required templates in a single file, delimited with filenames between
-triple-underscores.  In other words, a very simple template file might look
-like this:
-
- ___Module.pm___
- package {modulename};
- 1;
- ___Makefile.PL___
- die "lousy template"
-
-Originally, this module was to use Inline::Files, or at least standard
-double-underscore indication of file names, but it's just simpler this way.
-Patches welcome.
+required by the Template plugin.  It works like InlineStore, but instead of
+loading a physical file, loads the DATA section of a Perl module.
 
 =cut
 
@@ -51,23 +39,22 @@ Patches welcome.
 
 =head2 C<< templates >>
 
-This method reads in the template file (described above) and populates the
-object's C<templates> attribute.  The module template file is found by checking
-the MODULE_TEMPLATE_FILE environment variable and then the "template_file"
-config option.
+This method reads in the template module (described above) and populates the
+object's C<templates> attribute.  The module template module is found by
+checking the MODULE_TEMPLATE_MODULE environment variable and then the
+"template_module" config option.
 
 =cut
 
 sub _template_filehandle {
     my $self = shift;
 
-    my $template_filename =
-			($ENV{MODULE_TEMPLATE_FILE} || $self->{template_file})
-			or die "no template file defined";
-    open my $template_file, '<', $template_filename
-      or die "couldn't open template file: $template_filename";
-
-    return $template_file;
+    my $template_module =
+			($ENV{MODULE_TEMPLATE_MODULE} || $self->{template_module});
+		eval "require $template_module"
+			or die "couldn't load template store module $template_module\: $@";
+		no strict 'refs';
+    return \*{"$template_module\::DATA"};
 }
 
 sub templates {
