@@ -1,6 +1,6 @@
 package Module::Starter::Plugin::InlineStore;
 
-our $VERSION = '0.02';
+our $VERSION = '0.10';
 
 use warnings;
 use strict;
@@ -46,15 +46,18 @@ Patches welcome.
 =head2 C<< templates >>
 
 This method reads in the template file (described above) and populates the
-object's C<templates> attribute.  For now, the module template file is found by
-checking the MODULE_TEMPLATE_FILE environment variable.
+object's C<templates> attribute.  The module template file is found by checking
+the MODULE_TEMPLATE_FILE environment variable and then the "template_file"
+config option.
 
 =cut
 
 sub _template_filehandle {
     my $self = shift;
 
-    my $template_filename = $ENV{MODULE_TEMPLATE_FILE};
+    my $template_filename =
+			($ENV{MODULE_TEMPLATE_FILE} || $self->{template_file})
+			or die "no template file defined";
     open my $template_file, '<', $template_filename
       or die "couldn't open template file: $template_filename";
 

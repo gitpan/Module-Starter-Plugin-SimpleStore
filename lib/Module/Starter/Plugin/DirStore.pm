@@ -1,6 +1,6 @@
 package Module::Starter::Plugin::DirStore;
 
-our $VERSION = '0.02';
+our $VERSION = '0.10';
 
 use warnings;
 use strict;
@@ -36,8 +36,9 @@ required templates as files in a directory.
 =head2 C<< templates >>
 
 This method reads in the template files and populates the object's C<templates>
-attribute.  For now, the module template directory is found by checking the
-MODULE_TEMPLATE_DIR environment variable.
+attribute.  The module template directory is found by checking the
+MODULE_TEMPLATE_DIR environment variable and then the config option
+"template_dir".
 
 =cut
 
@@ -45,7 +46,7 @@ sub templates {
     my $self = shift;
     my %template;
 
-    my $template_dir = $ENV{MODULE_TEMPLATE_DIR}
+    my $template_dir = ($ENV{MODULE_TEMPLATE_DIR} || $self->{template_dir})
         or die "template dir not defined";
     die "template dir does not exist: $template_dir"
         unless -d $template_dir;

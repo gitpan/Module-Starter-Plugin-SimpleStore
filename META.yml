@@ -1,11 +1,11 @@
 # http://module-build.sourceforge.net/META-spec.html
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         Module-Starter-Plugin-SimpleStore
-version:      0.02
+version:      0.10
 version_from: lib/Module/Starter/Plugin/DirStore.pm
 installdirs:  site
 requires:
-    Module::Starter:               1.2501
+    Module::Starter:               1.32
     Test::More:                    0
 
 distribution_type: module
