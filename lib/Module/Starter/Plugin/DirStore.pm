@@ -1,6 +1,6 @@
 package Module::Starter::Plugin::DirStore;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_03';
 
 use warnings;
 use strict;
@@ -43,7 +43,7 @@ MODULE_TEMPLATE_DIR environment variable.
 
 sub templates {
     my $self = shift;
-    my %templates;
+    my %template;
 
     my $template_dir = $ENV{MODULE_TEMPLATE_DIR}
         or die "template dir not defined";
@@ -53,13 +53,13 @@ sub templates {
     foreach (<$template_dir/*>) {
 				my $basename = basename $_;
         next if (not -f $_) or ($basename =~ /^\./);
-        open TMPL, $_ or die "couldn't open template: $_";
+        open my $template_file, '<', $_ or die "couldn't open template: $_";
         local $/;
-        $templates{$basename} = <TMPL>;
-        close TMPL;
+        $template{$basename} = <$template_file>;
+        close $template_file;
     }
 
-    return %templates;
+    return %template;
 }
 
 =head1 AUTHOR
