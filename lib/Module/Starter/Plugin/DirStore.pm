@@ -3,7 +3,7 @@ use strict;
 
 package Module::Starter::Plugin::DirStore;
 
-our $VERSION = '0.141';
+our $VERSION = '0.142';
 
 use File::Basename;
 
@@ -13,7 +13,7 @@ Module::Starter::Plugin::DirStore -- module template files in a directory
 
 =head1 VERSION
 
-version 0.141
+version 0.142
 
  $Id: /my/cs/projects/ms/store/trunk/lib/Module/Starter/Plugin/DirStore.pm 28054 2006-11-14T23:54:25.455657Z rjbs  $
 

@@ -1,8 +1,8 @@
 --- #YAML:1.0
 name:                Module-Starter-Plugin-SimpleStore
-version:             0.141
+version:             0.142
 abstract:            template storage methods for Module::Starter
-license:             ~
+license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.31
 distribution_type:   module
 requires:     

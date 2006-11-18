@@ -3,7 +3,7 @@ use strict;
 
 package Module::Starter::Plugin::InlineStore;
 
-our $VERSION = '0.141';
+our $VERSION = '0.142';
 
 use Carp ();
 
@@ -13,7 +13,7 @@ Module::Starter::Plugin::InlineStore -- inline module template files
 
 =head1 VERSION
 
-version 0.141
+version 0.142
 
  $Id: /my/cs/projects/ms/store/trunk/lib/Module/Starter/Plugin/InlineStore.pm 28097 2006-11-15T01:10:41.233329Z rjbs  $
 
