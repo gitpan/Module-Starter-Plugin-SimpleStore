@@ -1,15 +1,15 @@
 --- #YAML:1.0
 name:                Module-Starter-Plugin-SimpleStore
-version:             0.142
+version:             0.143
 abstract:            template storage methods for Module::Starter
 license:             perl
-generated_by:        ExtUtils::MakeMaker version 6.31
+author:              
+    - Ricardo SIGNES <rjbs@cpan.org>
+generated_by:        ExtUtils::MakeMaker version 6.42
 distribution_type:   module
 requires:     
     Module::Starter:               1.32
     Test::More:                    0
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
-    version: 1.2
-author:
-    - Ricardo SIGNES <rjbs@cpan.org>
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3
